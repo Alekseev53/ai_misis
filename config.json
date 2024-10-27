@@ -1,0 +1,10 @@
+{
+    "model_name_or_path": "sberbank-ai/rugpt3large_based_on_gpt2",
+    "generation_parameters": {
+      "max_length": 150,
+      "top_k": 5,
+      "top_p": 0.95,
+      "temperature": 1.0,
+      "num_return_sequences": 3
+    }
+  }
