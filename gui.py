@@ -4,8 +4,16 @@ from text_generator import generate_text
 
 def setup_gui(tokenizer, model, config):
     """
-    Настраивает и запускает интерфейс (GUI)
+    Настраивает и запускает графический интерфейс для генерации текста.
+
+    Параметры:
+    tokenizer: Токенизатор GPT, используемый для преобразования ввода в токены.
+    model: Модель GPT, используемая для генерации текста.
+    config: Словарь конфигурации, содержащий параметры генерации текста. 
+    Функция настраивает интерфейс GUI с полем для ввода текста, кнопкой для запуска процесса
+    генерации текста и областью для отображения сгенерированных текстов.
     """
+
     def generate_text_and_display():
         """
         Функция для генерации текста из интерфейса и отображения результата.
@@ -14,9 +22,15 @@ def setup_gui(tokenizer, model, config):
         
         # Параметры генерации, полученные из конфигурационного файла
         generation_params = config["generation_parameters"]
+        max_length = generation_params["max_length"]
+        top_k = generation_params["top_k"]
+        top_p = generation_params["top_p"]
+        temperature = generation_params["temperature"]
+        num_return_sequences = generation_params["num_return_sequences"]
+        repetition_penalty = generation_params["repetition_penalty"]
         
         # Вызываем функцию генерации текста с параметрами из config
-        generated_texts = generate_text(input_text.strip(), model, tokenizer, generation_params)
+        generated_texts = generate_text(input_text.strip(), model, tokenizer, max_length,top_k,top_p,temperature,num_return_sequences,repetition_penalty)
 
         # Очищаем поле вывода
         output_text_area.delete("1.0", tk.END)
